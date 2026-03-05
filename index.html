@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carrito de Compras - Productos de Informatica</title>
 
-  <!-- Tipografias para dar una identidad visual mas marcada -->
+  <!-- Tipografias elegidas para una interfaz con estilo tecnologico -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -13,32 +13,65 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Encabezado principal de la tienda -->
-  <header class="hero">
+  <!-- Encabezado principal con resumen rapido de la tienda -->
+  <header class="hero panel">
+    <p class="hero-kicker">Catalogo 2026</p>
     <h1>Tienda de Informatica</h1>
-    <p>Carrito de compras con validacion de pago y recibo en PDF</p>
+    <p>Carrito de compras con validacion de pago y recibo PDF</p>
+
+    <div class="hero-badges">
+      <span id="productCountBadge" class="chip">0 productos visibles</span>
+      <span id="itemsInCartBadge" class="chip">0 items en carrito</span>
+    </div>
   </header>
 
-  <!-- Controles globales: moneda y modo visual -->
-  <section class="toolbar">
-    <label for="currencySelect">Moneda:</label>
-    <select id="currencySelect" aria-label="Seleccion de moneda">
-      <option value="GTQ">Quetzales (GTQ)</option>
-      <option value="USD">Dolares (USD)</option>
-    </select>
+  <!-- Barra de herramientas global para filtrar y personalizar la vista -->
+  <section class="toolbar panel">
+    <div class="control">
+      <label for="searchInput">Buscar producto</label>
+      <input id="searchInput" type="search" placeholder="Ejemplo: laptop, SSD, monitor..." />
+    </div>
 
-    <button id="themeToggle" class="btn-secondary" type="button">Modo oscuro</button>
+    <div class="control">
+      <label for="categoryFilter">Categoria</label>
+      <select id="categoryFilter" aria-label="Filtrar por categoria">
+        <option value="todos">Todas</option>
+        <option value="laptops">Laptops</option>
+        <option value="monitores">Monitores</option>
+        <option value="perifericos">Perifericos</option>
+        <option value="almacenamiento">Almacenamiento</option>
+        <option value="audio">Audio</option>
+        <option value="red">Red</option>
+      </select>
+    </div>
+
+    <div class="control">
+      <label for="currencySelect">Moneda</label>
+      <select id="currencySelect" aria-label="Seleccion de moneda">
+        <option value="GTQ">Quetzales (GTQ)</option>
+        <option value="USD">Dolares (USD)</option>
+      </select>
+      <small class="rate-note">Tasa referencial: 1 USD = Q7.80</small>
+    </div>
+
+    <div class="toolbar-action">
+      <button id="themeToggle" class="btn-secondary" type="button">Modo oscuro</button>
+    </div>
   </section>
 
   <main class="layout">
-    <section>
-      <h2>Productos</h2>
+    <section class="catalog-section panel">
+      <div class="section-head">
+        <h2>Productos</h2>
+        <small>Selecciona y agrega al carrito</small>
+      </div>
+
       <!-- Contenedor dinamico de tarjetas de productos -->
       <div id="productsContainer" class="product-grid"></div>
     </section>
 
     <aside>
-      <section class="preview-card">
+      <section class="preview-card panel">
         <h2>Vista previa</h2>
         <!-- La imagen y datos se actualizan al elegir un producto -->
         <img id="previewImage" src="" alt="Vista previa del producto" />
@@ -46,7 +79,7 @@
         <p id="previewPrice">--</p>
       </section>
 
-      <section class="cart-card">
+      <section class="cart-card panel">
         <h2>Carrito</h2>
         <!-- Lista dinamica de productos en carrito -->
         <ul id="cartItems"></ul>
@@ -57,7 +90,7 @@
         </div>
       </section>
 
-      <section class="payment-card">
+      <section class="payment-card panel">
         <h2>Validar pago</h2>
 
         <!-- Formulario minimo para validar datos de pago -->
@@ -105,9 +138,9 @@
     <small>Proyecto de carrito de compras de productos de informatica.</small>
   </footer>
 
-  <!-- Libreria para alertas visuales solicitadas por el usuario -->
+  <!-- Libreria para alertas visuales -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <!-- Libreria para crear el recibo PDF desde JavaScript -->
+  <!-- Libreria para generar recibos en formato PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="script.js"></script>
 </body>
